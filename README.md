@@ -1,1 +1,1 @@
-ECONOVATION HEROES Java 2020 Racing Game Practice
+ECONOVATION HEROES Java Racing Game Practice
