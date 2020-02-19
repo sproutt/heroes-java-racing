@@ -9,7 +9,7 @@ public class Trial {
 
     public void move(Car car){
         if (random.nextInt(10) >= 4){
-            car.incrementPosition();
+            car.increasePosition();
         }
     }
 }
