@@ -45,6 +45,7 @@ public class RacingGame {
 
         cars = Car.generateCars(inputView.inputCarName());
         int trialCount = inputView.inputNumberOfTrials();
+
         for (int i = 0; i < trialCount; i++) {
             racingGame.oneTrial();
             resultView.printTrialResult();
