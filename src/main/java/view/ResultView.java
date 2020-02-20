@@ -17,7 +17,6 @@ public class ResultView{
     }
 
     public void printFinalWinner(){
-        System.out.print(String.join(",",  racingGame.searchWinners()));
-        System.out.println("가 최종 우승했습니다.");
+        System.out.print(String.join(",",  racingGame.searchWinners()) + "가 최종 우승했습니다.");
     }
 }
