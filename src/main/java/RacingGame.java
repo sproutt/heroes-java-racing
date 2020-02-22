@@ -27,7 +27,7 @@ public class RacingGame {
     }
 
     public Cars getWinner(Cars cars) {
-        Cars winner = cars;
+        Cars winner = new Cars(cars);
         int maxPosition = cars.getCars().stream().max(Car::compareTo).get().getPosition();
 
         winner.getCars().removeIf(t -> t.getPosition() != maxPosition);

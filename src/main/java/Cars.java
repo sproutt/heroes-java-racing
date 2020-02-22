@@ -17,6 +17,10 @@ public class Cars {
         }
     }
 
+    public Cars(Cars cars) {
+        this.cars = new ArrayList<>(cars.getCars());
+    }
+
     public List<Car> getCars() {
         return cars;
     }
