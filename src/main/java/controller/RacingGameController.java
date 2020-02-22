@@ -4,30 +4,34 @@ import model.Car;
 import model.RacingGame;
 import view.InputView;
 
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class RacingGameController {
 
     RacingGame racingGame;
+    Scanner scanner;
+    InputView inputView;
+    Converter converter;
+
+    public RacingGameController() {
+        scanner = new Scanner(System.in);
+        inputView = new InputView();
+        converter = new Converter();
+    }
 
     public void init() {
-        Scanner scanner = new Scanner(System.in);
-        InputView inputView = new InputView();
         inputView.printCarNameStringRequestSentence();
-        List<CarController> carControllerList = convertCarNameStringToCarArrayList(scanner.nextLine());
+        List<CarController> carControllerList =
+                converter.convertCarNameStringToCarArrayList(scanner.nextLine());
         inputView.printNumberOfIterationsRequestSentence();
         int numberOfIterations = scanner.nextInt();
-        racingGame = new RacingGame(numberOfIterations,carControllerList);
+        racingGame = new RacingGame(numberOfIterations, carControllerList);
     }
 
     public void start() {
 
     }
 
-    public static void convertCarNameStringToCarArrayList(String carNameString) {
-        String[] stringNameArray = carNameString.split(",");
 
 
-    }
 }

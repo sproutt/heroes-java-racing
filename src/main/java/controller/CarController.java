@@ -10,9 +10,8 @@ public class CarController {
     private Car car;
     private ResultView resultView;
 
-    public CarController(Car car, ResultView resultView) {
+    public CarController(Car car) {
         this.car = car;
-        this.resultView = new ResultView();
     }
 
 

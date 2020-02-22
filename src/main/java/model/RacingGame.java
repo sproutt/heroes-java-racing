@@ -14,4 +14,12 @@ public class RacingGame {
         this.numberOfIterations = numberOfIterations;
         this.carControllerList = carControllerList;
     }
+
+    public int getNumberOfIterations() {
+        return numberOfIterations;
+    }
+
+    public List<CarController> getCarControllerList() {
+        return carControllerList;
+    }
 }
