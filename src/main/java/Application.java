@@ -1,8 +1,8 @@
 import controller.RacingGameController;
-import exception.OutOfNameLengthException;
+import exception.OutOfCarNameLengthException;
 
 public class Application {
-    public static void main(String[] args) throws OutOfNameLengthException {
+    public static void main(String[] args) throws OutOfCarNameLengthException {
         RacingGameController racingGameController = new RacingGameController();
         racingGameController.set();
         racingGameController.start();

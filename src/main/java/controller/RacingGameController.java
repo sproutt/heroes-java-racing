@@ -1,11 +1,12 @@
 package controller;
 
-import exception.OutOfNameLengthException;
+import exception.OutOfCarNameLengthException;
 import model.RacingGame;
 import view.RacingGameInputView;
 import view.RacingGameResultView;
 
-import java.util.*;
+import java.util.List;
+import java.util.Scanner;
 
 public class RacingGameController {
 
@@ -26,10 +27,10 @@ public class RacingGameController {
         racingGameResultView = new RacingGameResultView();
     }
 
-    public void set() throws OutOfNameLengthException {
+    public void set() throws OutOfCarNameLengthException {
         racingGameInputView.printCarNameStringRequestSentence();
         List<CarController> carControllerList =
-                converter.convertCarNameStringToCarArrayList(scanner.nextLine());
+                converter.convertCarNameStringToCarControllerList(scanner.nextLine());
         racingGameInputView.printNumberOfIterationsRequestSentence();
         int numberOfIterations = scanner.nextInt();
         racingGame = new RacingGame(numberOfIterations, carControllerList);

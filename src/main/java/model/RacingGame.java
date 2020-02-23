@@ -3,9 +3,7 @@ package model;
 import controller.CarController;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
 
 public class RacingGame {
 

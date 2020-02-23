@@ -1,19 +1,25 @@
-import org.jboss.arquillian.container.test.api.Deployment;
-import org.jboss.arquillian.junit.Arquillian;
-import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.asset.EmptyAsset;
-import org.jboss.shrinkwrap.api.spec.JavaArchive;
-import org.junit.runner.RunWith;
+package model;
 
-import static org.junit.Assert.*;
 
-@RunWith(Arquillian.class)
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class CarTest {
-    @Deployment
-    public static JavaArchive createDeployment() {
-        return ShrinkWrap.create(JavaArchive.class)
-                .addClass(model.Car.class)
-                .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
+
+    Car car;
+
+    @Before
+    public void setup() {
+        car = new Car("crong");
     }
 
+    @Test
+    public void moveTest() {
+        car.move();
+        assertThat(car.getLocation()).isEqualTo(1);
+        car.move();
+        assertThat(car.getLocation()).isEqualTo(2);
+    }
 }

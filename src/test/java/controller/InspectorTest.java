@@ -1,19 +1,29 @@
-import org.jboss.arquillian.container.test.api.Deployment;
-import org.jboss.arquillian.junit.Arquillian;
-import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.asset.EmptyAsset;
-import org.jboss.shrinkwrap.api.spec.JavaArchive;
-import org.junit.runner.RunWith;
+package controller;
 
-import static org.junit.Assert.*;
+import exception.OutOfCarNameLengthException;
+import org.junit.Before;
+import org.junit.Test;
 
-@RunWith(Arquillian.class)
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 public class InspectorTest {
-    @Deployment
-    public static JavaArchive createDeployment() {
-        return ShrinkWrap.create(JavaArchive.class)
-                .addClass(controller.Inspector.class)
-                .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
+
+    Inspector inspector;
+
+    @Before
+    public void setup() {
+        inspector = new Inspector();
     }
 
+    @Test
+    public void inspectCarNameNotThrowsExceptionTest() throws OutOfCarNameLengthException {
+        inspector.inspectCarNameLength("crong");
+    }
+
+    @Test
+    public void inspectCarNameThrowsExceptionTest() throws OutOfCarNameLengthException {
+        assertThatThrownBy(() -> {
+            inspector.inspectCarNameLength("keroro");
+        }).isInstanceOf(OutOfCarNameLengthException.class);
+    }
 }

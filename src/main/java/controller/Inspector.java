@@ -1,11 +1,11 @@
 package controller;
 
-import exception.OutOfNameLengthException;
+import exception.OutOfCarNameLengthException;
 
 public class Inspector {
-    public void inspectCarNameLength(String carName) throws OutOfNameLengthException {
+    public void inspectCarNameLength(String carName) throws OutOfCarNameLengthException {
         if(carName.length() > 5) {
-            throw new OutOfNameLengthException("자동차 이름은 5자 이하만 가능합니다.");
+            throw new OutOfCarNameLengthException("자동차 이름은 5자 이하만 가능합니다.");
         }
     }
 }

@@ -1,6 +1,6 @@
 package controller;
 
-import exception.OutOfNameLengthException;
+import exception.OutOfCarNameLengthException;
 import model.Car;
 
 import java.util.ArrayList;
@@ -9,7 +9,8 @@ import java.util.stream.Stream;
 
 public class Converter {
 
-    public ArrayList<CarController> convertCarNameStringToCarArrayList(String carNameString) throws OutOfNameLengthException {
+    public ArrayList<CarController> convertCarNameStringToCarControllerList(String carNameString)
+            throws OutOfCarNameLengthException {
         Inspector inspector = new Inspector();
         String[] carNameArray = carNameString.split(",");
         for (String carName : carNameArray) {
