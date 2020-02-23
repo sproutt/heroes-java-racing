@@ -1,10 +1,10 @@
 import controller.RacingGameController;
-import model.RacingGame;
+import exception.OutOfNameLengthException;
 
 public class Application {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws OutOfNameLengthException {
         RacingGameController racingGameController = new RacingGameController();
-        racingGameController.init();
+        racingGameController.set();
         racingGameController.start();
     }
 }

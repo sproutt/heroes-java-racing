@@ -1,37 +1,47 @@
 package controller;
 
-import model.Car;
+import exception.OutOfNameLengthException;
 import model.RacingGame;
-import view.InputView;
+import view.RacingGameInputView;
+import view.RacingGameResultView;
 
 import java.util.*;
 
 public class RacingGameController {
 
-    RacingGame racingGame;
     Scanner scanner;
-    InputView inputView;
     Converter converter;
+    RacingGame racingGame;
+    RacingGameMoveProcessor racingGameMoveProcessor;
+    RacingGameRankProcessor racingGameRankProcessor;
+    RacingGameInputView racingGameInputView;
+    RacingGameResultView racingGameResultView;
 
     public RacingGameController() {
         scanner = new Scanner(System.in);
-        inputView = new InputView();
         converter = new Converter();
+        racingGameMoveProcessor = new RacingGameMoveProcessor();
+        racingGameRankProcessor = new RacingGameRankProcessor();
+        racingGameInputView = new RacingGameInputView();
+        racingGameResultView = new RacingGameResultView();
     }
 
-    public void init() {
-        inputView.printCarNameStringRequestSentence();
+    public void set() throws OutOfNameLengthException {
+        racingGameInputView.printCarNameStringRequestSentence();
         List<CarController> carControllerList =
                 converter.convertCarNameStringToCarArrayList(scanner.nextLine());
-        inputView.printNumberOfIterationsRequestSentence();
+        racingGameInputView.printNumberOfIterationsRequestSentence();
         int numberOfIterations = scanner.nextInt();
         racingGame = new RacingGame(numberOfIterations, carControllerList);
     }
 
     public void start() {
-
+        racingGameResultView.printExecutionResultSentence();
+        for (int iterationCount = 0; iterationCount < racingGame.getNumberOfIterations(); iterationCount++) {
+            racingGameMoveProcessor.moveRandomly(racingGame);
+            racingGameResultView.printGameStatus(racingGame);
+        }
+        racingGameRankProcessor.setWinnerCarList(racingGame);
+        racingGameResultView.printWinnerCar(racingGame);
     }
-
-
-
 }

@@ -1,4 +1,7 @@
 package exception;
 
-public class OutOfNameLengthException {
+public class OutOfNameLengthException extends Exception {
+    public OutOfNameLengthException(String message) {
+        super(message);
+    }
 }
