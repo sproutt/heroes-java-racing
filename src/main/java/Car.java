@@ -23,8 +23,8 @@ public class Car {
         return location;
     }
 
-    public void moveRandomly(int randomNumber) {
-        if (randomNumber > 4)
+    public void move(int randomNumber) {
+        if (randomNumber >= 4)
             location++;
     }
 

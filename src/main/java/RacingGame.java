@@ -1,12 +1,10 @@
+import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
 
 public class RacingGame {
 
-    private static final int FIRST_ELEMENT = 0;
     private int iterationNumber;
     private List<Car> cars;
-    private List<Car> winnerCars;
 
     public RacingGame(int iterationNumber, List<Car> cars) {
         this.iterationNumber = iterationNumber;
@@ -21,18 +19,17 @@ public class RacingGame {
         return cars;
     }
 
-    public List<Car> getWinnerCars() {
-        return winnerCars;
-    }
-
     public void proceedOnce() {
-        cars.forEach(car -> car.moveRandomly((int) (Math.random() * 9)));
+        cars.forEach(car -> car.move((int) (Math.random() * 9)));
     }
 
-    public void setWinnerCars() {
-        winnerCars = cars;
-        int maxLocation = winnerCars.stream().max((car1, car2) ->
-                car1.getLocation() - car2.getLocation()).get().getLocation();
+    public List<Car> createWinnerCars() {
+        List<Car> winnerCars = cars;
+        int maxLocation = winnerCars.stream()
+                .max(Comparator.comparingInt(Car::getLocation))
+                .get()
+                .getLocation();
         winnerCars.removeIf(car -> car.getLocation() != maxLocation);
+        return winnerCars;
     }
 }

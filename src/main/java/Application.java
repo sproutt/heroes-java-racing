@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -20,11 +18,11 @@ public class Application {
             racingGame.proceedOnce();
             resultView.printRacingGameStatus(racingGame);
         }
-        racingGame.setWinnerCars();
-        resultView.printRacingGameResult(racingGame);
+        List<Car> winnerCars = racingGame.createWinnerCars();
+        resultView.printRacingGameResult(winnerCars);
     }
 
-    private static List<Car> convertCarNameStringToCarList(String carNameString) {
+    public static List<Car> convertCarNameStringToCarList(String carNameString) {
         String[] carNames = carNameString.split(",");
         return Stream.of(carNames).map(Car::new).collect(Collectors.toList());
     }

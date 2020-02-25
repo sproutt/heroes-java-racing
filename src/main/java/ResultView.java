@@ -13,8 +13,8 @@ public class ResultView {
         System.out.println("실행 결과");
     }
 
-    public void printRacingGameResult(RacingGame racingGame) {
-        racingGame.getWinnerCars().forEach(car -> System.out.print(car.getName() + " "));
+    public void printRacingGameResult(List<Car> winnerCars) {
+        winnerCars.forEach(winnerCar -> System.out.print(winnerCar.getName() + " "));
         System.out.println("가 최종 우승했습니다.");
     }
 }
