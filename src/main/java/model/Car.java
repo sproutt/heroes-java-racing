@@ -9,7 +9,7 @@ public class Car {
         carPosition = 0;
     }
 
-    public void moveCar() {
+    public void move() {
         carPosition++;
     }
 

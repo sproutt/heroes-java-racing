@@ -25,7 +25,7 @@ public class RacingGame {
 
     private void moveOrStopCar(Car car, int randomNumber) {
         if (randomNumber >= REFERENCE_NUMBER) {
-            car.moveCar();
+            car.move();
         }
     }
 

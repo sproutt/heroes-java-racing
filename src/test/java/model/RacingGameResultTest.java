@@ -12,7 +12,7 @@ public class RacingGameResultTest {
     @Test
     public void winner_1명을_추출한다() {
         List<Car> cars = new ArrayList<Car>(Arrays.asList(new Car("car1"), new Car("car2"), new Car("car3")));
-        cars.get(0).moveCar();
+        cars.get(0).move();
         RacingGameResult result = new RacingGameResult(cars);
 
         assertEquals(result.getWinners(), new ArrayList<String>(Arrays.asList("car1")));
@@ -21,8 +21,8 @@ public class RacingGameResultTest {
     @Test
     public void winner_2명을_추출한다() {
         List<Car> cars = new ArrayList<Car>(Arrays.asList(new Car("car1"), new Car("car2"), new Car("car3")));
-        cars.get(0).moveCar();
-        cars.get(1).moveCar();
+        cars.get(0).move();
+        cars.get(1).move();
         RacingGameResult result = new RacingGameResult(cars);
 
         assertEquals(result.getWinners(), new ArrayList<String>(Arrays.asList("car1", "car2")));

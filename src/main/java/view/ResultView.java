@@ -12,7 +12,7 @@ public class ResultView {
         System.out.println();
     }
 
-    public static void printWinner(List<String> winner) {
-        System.out.println(winner + "가 최종 우승 했습니다.");
+    public static void printWinner(List<String> winners) {
+        System.out.println(winners + "가 최종 우승 했습니다.");
     }
 }

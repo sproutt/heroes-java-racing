@@ -5,20 +5,20 @@ import java.util.List;
 
 public class RacingGameResult {
     private List<Car> cars;
-    private List<String> winner;
+    private List<String> winners;
 
     public RacingGameResult(List<Car> cars) {
         this.cars = cars;
     }
 
     public List<String> getWinners() {
-        winner = new ArrayList<String>();
+        winners = new ArrayList<>();
         int max = findMaxPosition();
 
         for (Car car : cars) {
             addWinner(max, car);
         }
-        return winner;
+        return winners;
     }
 
     private int findMaxPosition() {
@@ -31,7 +31,7 @@ public class RacingGameResult {
 
     private void addWinner(int max, Car car) {
         if (car.getCarPosition() == max) {
-            winner.add(car.getCarName());
+            winners.add(car.getCarName());
         }
     }
 }
