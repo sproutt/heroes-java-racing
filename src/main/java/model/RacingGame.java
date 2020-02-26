@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
-    static final int REFERENCE_NUMBER = 4;
+    private static final int REFERENCE_NUMBER = 4;
 
     public List<Car> createCars(String inputCarNames) {
         String[] carNames = util.CarNamesSpliter.splitCarNames(inputCarNames);

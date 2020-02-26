@@ -13,7 +13,7 @@ public class CarNamesSpliter {
         return carNames;
     }
 
-    public static String[] spliteString(String inputCarNames) {
+    private static String[] spliteString(String inputCarNames) {
         String[] carNames = inputCarNames.split(",");
         return carNames;
     }
