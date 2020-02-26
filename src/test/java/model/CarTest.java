@@ -1,10 +1,10 @@
 package model;
 
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 public class CarTest {
-
     @Test
     public void Car을_생성한다() {
         Car car = new Car("a");

@@ -1,9 +1,11 @@
 package model;
 
 import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.*;
 
@@ -16,7 +18,6 @@ public class RacingGameTest {
         assertThat(racingGame.createCars("a,b,c").size(), equalTo(3));
         assertThat(racingGame.createCars("a,b,c,car4").size(), equalTo(4));
     }
-
     @Test
     public void 자동차경주_시작한다() {
         List<Car> cars = racingGame.createCars("car1,car2,car3");
