@@ -1,12 +1,13 @@
 package model;
 
+import javax.naming.InvalidNameException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
     private static final int REFERENCE_NUMBER = 4;
 
-    public List<Car> createCars(String inputCarNames) {
+    public List<Car> createCars(String inputCarNames) throws InvalidNameException {
         String[] carNames = util.CarNamesSpliter.splitCarNames(inputCarNames);
         List<Car> cars = new ArrayList<Car>(carNames.length);
 
@@ -28,7 +29,5 @@ public class RacingGame {
             car.move();
         }
     }
-
-
 }
 

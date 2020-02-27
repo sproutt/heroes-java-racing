@@ -7,10 +7,11 @@ import view.InputView;
 import model.RacingGame;
 import view.ResultView;
 
+import javax.naming.InvalidNameException;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InvalidNameException {
         String carNames = InputView.getCarNames();
         int attemptTimes = InputView.getAttemptTimes();
         RacingGame racingGame = new RacingGame();

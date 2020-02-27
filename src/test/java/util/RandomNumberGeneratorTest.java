@@ -26,5 +26,4 @@ public class RandomNumberGeneratorTest {
         assertThat(RandomNumberGenerator.createRandomNumbers(4).size(), equalTo(4));
         assertThat(RandomNumberGenerator.createRandomNumbers(5).size(), equalTo(5));
     }
-
 }

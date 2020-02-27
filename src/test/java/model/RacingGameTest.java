@@ -2,6 +2,7 @@ package model;
 
 import org.junit.Test;
 
+import javax.naming.InvalidNameException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,13 +14,13 @@ public class RacingGameTest {
     RacingGame racingGame = new RacingGame();
 
     @Test
-    public void 자동차객체가_알맞게_생성됐는지_확인한다() {
+    public void 자동차객체가_알맞게_생성됐는지_확인한다() throws InvalidNameException {
         assertThat(racingGame.createCars("car1").size(), equalTo(1));
         assertThat(racingGame.createCars("a,b,c").size(), equalTo(3));
         assertThat(racingGame.createCars("a,b,c,car4").size(), equalTo(4));
     }
     @Test
-    public void 자동차경주_시작한다() {
+    public void 자동차경주_시작한다() throws InvalidNameException {
         List<Car> cars = racingGame.createCars("car1,car2,car3");
         List<Integer> randomNumbers = new ArrayList<Integer>(Arrays.asList(1, 4, 9));
         racingGame.startRacing(cars, randomNumbers);

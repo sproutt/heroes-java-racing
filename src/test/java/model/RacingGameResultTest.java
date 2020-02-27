@@ -2,6 +2,7 @@ package model;
 
 import org.junit.Test;
 
+import javax.naming.InvalidNameException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -29,7 +30,7 @@ public class RacingGameResultTest {
     }
 
     @Test
-    public void 아무런시도를하지않고_winner추출한다() {
+    public void 아무런시도를하지않고_winner추출한다() throws InvalidNameException {
         RacingGame racingGame = new RacingGame();
         List<Car> cars = racingGame.createCars("1,2,3");
         RacingGameResult result = new RacingGameResult(cars);
