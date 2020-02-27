@@ -20,13 +20,4 @@ public class Car {
     public int getCarPosition() {
         return carPosition;
     }
-
-    public String visualizePosition() {
-        StringBuilder racingBar = new StringBuilder();
-        racingBar.append(carName + ": ");
-        for (int i = 0; i < carPosition; i++) {
-            racingBar.append("-");
-        }
-        return racingBar.toString();
-    }
 }

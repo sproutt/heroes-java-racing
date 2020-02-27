@@ -18,14 +18,4 @@ public class CarTest {
         car.move();
         assertEquals(1, car.getCarPosition());
     }
-
-    @Test
-    public void Car의_Position에따라서_visualizePosition이_만들어진다() {
-        Car car = new Car("a");
-        car.move();
-        car.move();
-        assertEquals(2, car.getCarPosition());
-        assertEquals(car.visualizePosition(), car.getCarName() + ": " + "--");
-
-    }
 }

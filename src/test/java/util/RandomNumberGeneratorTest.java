@@ -17,7 +17,7 @@ public class RandomNumberGeneratorTest {
         if (number > 0 && number <= 9) {
             return true;
         }
-        return true;
+        return false;
     }
 
     @Test
