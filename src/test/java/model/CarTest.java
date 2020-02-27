@@ -26,14 +26,7 @@ public class CarTest {
     }
 
     @Test
-    public void getPositionTest(){
-        assertEquals(0, tesla.getPosition());
-        assertEquals(0, kia.getPosition());
-        assertEquals(0, hyundai.getPosition());
-    }
-
-    @Test
-    public void moveTest(){
+    public void getPositionAndMoveTest(){
         tesla.move(); tesla.move(); tesla.move();
         assertEquals(3, tesla.getPosition());
 
@@ -43,5 +36,4 @@ public class CarTest {
         hyundai.move();
         assertEquals(1, hyundai.getPosition());
     }
-
 }
