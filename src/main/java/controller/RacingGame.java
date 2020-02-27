@@ -1,55 +1,66 @@
 package controller;
 
 import model.Car;
-import view.InputView;
-import view.ResultView;
+import util.RandomGenerator;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class RacingGame {
 
-    private static ArrayList<Car> cars;
-    private Trial trial = new Trial();
+    public static final int CRITICAL_POINT = 5;
+    public static final int MAX_NAME_LENGTH = 5;
 
-    public ArrayList<Car> getCars(){
-        return cars;
-    }
-
-    public void oneTrial(){
+    public void oneTrial(List<Car> cars){
         for (Car car : cars){
-            trial.move(car);
+            check(car);
         }
     }
 
-    public ArrayList<String> searchWinners(){
-        ArrayList<Integer> carPosition = new ArrayList<>();
+    public void check(Car car){
+        if (RandomGenerator.randInt(10) > CRITICAL_POINT){
+            car.move();
+        }
+    }
+
+    public ArrayList<String> searchWinners(List<Car> cars){
         ArrayList<String> winnerNames = new ArrayList<>();
+        int maxPosition = searchMaxPosition(cars);
 
         for (Car car : cars){
-            carPosition.add(car.getPosition());
-        }
-        int winnerPosition = Collections.max(carPosition);
-        for (Car car : cars){
-            if (car.getPosition() == winnerPosition){
-                winnerNames.add(car.getName());
-            }
+            checkWinner(car, winnerNames, maxPosition);
         }
         return winnerNames;
     }
 
-    public static void main(String[] args) throws Exception{
-        InputView inputView = new InputView();
-        ResultView resultView = new ResultView();
-        RacingGame racingGame = new RacingGame();
+    public int searchMaxPosition(List<Car> cars){
+        ArrayList<Integer> carPosition = new ArrayList<>();
 
-        cars = Car.generateCars(inputView.inputCarName());
-        int trialCount = inputView.inputNumberOfTrials();
-
-        for (int i = 0; i < trialCount; i++) {
-            racingGame.oneTrial();
-            resultView.printTrialResult();
+        for (Car car : cars){
+            carPosition.add(car.getPosition());
         }
-        resultView.printFinalWinner();
+        return Collections.max(carPosition);
+    }
+
+    public void checkWinner(Car car, ArrayList<String> winnerNames, int maxPosition){
+        if (car.getPosition() == maxPosition){
+            winnerNames.add(car.getName());
+        }
+    }
+
+    public static List<Car> generateCars(String[] carNames) throws StringOutOfBoundsException{
+        List<Car> cars = new ArrayList<>();
+        for (String carName : carNames){
+            checkNameLength(carName, cars);
+        }
+        return cars;
+    }
+
+    public static void checkNameLength(String carName, List<Car> cars) throws StringOutOfBoundsException {
+        if(carName.length() >  MAX_NAME_LENGTH){
+            throw new StringOutOfBoundsException();
+        }
+        cars.add(new Car(carName));
     }
 }
