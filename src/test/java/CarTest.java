@@ -17,20 +17,17 @@ public class CarTest {
     }
 
     @Test
-    public void 차가_움직이지_않을때_테스트() {
+    public void move_Test() {
         car.move(3, CRITERIA_NUMBER);
         assertThat(car.getMovingStatuses())
                 .isEqualTo(Arrays.asList(new Integer(0)));
         assertThat(car.getLocation())
                 .isEqualTo(0);
-    }
-
-    @Test
-    public void 차가_움직일때_테스트() {
         car.move(4, CRITERIA_NUMBER);
         assertThat(car.getMovingStatuses())
-                .isEqualTo(Arrays.asList(new Integer(1)));
+                .isEqualTo(Arrays.asList(new Integer(0), new Integer(1)));
         assertThat(car.getLocation())
                 .isEqualTo(1);
     }
+
 }
