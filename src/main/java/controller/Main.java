@@ -2,7 +2,6 @@ package controller;
 
 import model.Car;
 import model.RacingGameResult;
-import util.RandomNumberGenerator;
 import view.InputView;
 import model.RacingGame;
 import view.ResultView;

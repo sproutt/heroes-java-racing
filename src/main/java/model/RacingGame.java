@@ -1,5 +1,7 @@
 package model;
 
+import controller.CarNamesSpliter;
+
 import javax.naming.InvalidNameException;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,8 +10,8 @@ public class RacingGame {
     private static final int REFERENCE_NUMBER = 4;
 
     public List<Car> createCars(String inputCarNames) throws InvalidNameException {
-        String[] carNames = util.CarNamesSpliter.splitCarNames(inputCarNames);
-        List<Car> cars = new ArrayList<Car>(carNames.length);
+        String[] carNames = CarNamesSpliter.splitCarNames(inputCarNames);
+        List<Car> cars = new ArrayList<>(carNames.length);
 
         for (int i = 0; i < carNames.length; i++) {
             cars.add(new Car(carNames[i]));

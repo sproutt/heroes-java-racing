@@ -5,7 +5,8 @@ import model.Car;
 import java.util.List;
 
 public class ResultView {
-    private final static String POSITION_VISUALIZATION= "-";
+    private final static String POSITION_VISUALIZATION = "-";
+
     public static void printRacing(List<Car> cars) {
         for (Car car : cars) {
             System.out.println(visualizeCarPosition(car));
@@ -15,7 +16,7 @@ public class ResultView {
 
     private static String visualizeCarPosition(Car car) {
         StringBuilder racingBar = new StringBuilder();
-        racingBar.append(car.getCarName()+ ": ");
+        racingBar.append(car.getCarName() + ": ");
         for (int i = 0; i < car.getCarPosition(); i++) {
             racingBar.append(POSITION_VISUALIZATION);
         }

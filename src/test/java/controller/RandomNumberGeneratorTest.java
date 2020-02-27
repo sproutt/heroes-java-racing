@@ -1,4 +1,4 @@
-package util;
+package controller;
 
 import org.junit.Test;
 
@@ -9,12 +9,12 @@ public class RandomNumberGeneratorTest {
     @Test
     public void 영에서9까지의_난수_1개를_생성한다() {
         for (int i = 0; i < 50; i++) {
-            assertTrue(isInRange(RandomNumberGenerator.createOneRandomNumber()));
+            assertThat(isInRange(RandomNumberGenerator.createOneRandomNumber()),equalTo(true));
         }
     }
 
     private boolean isInRange(int number) {
-        if (number > 0 && number <= 9) {
+        if (number >= 0 && number <= 9) {
             return true;
         }
         return false;
