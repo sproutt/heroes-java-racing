@@ -1,51 +1,51 @@
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Car implements Comparable<Car> {
-    static int countUnnamed = 0;
     private String name;
-    private int position;
+    private int lastPosition;
+    private List<Integer> allPositions;
 
-    public Car(String name) {
+    public Car(String name) throws OutOfLengthException {
         setName(name);
-        this.position = 0;
+
+        this.lastPosition = 0;
+        allPositions = new ArrayList<>(lastPosition);
     }
 
     public String getName() {
         return name;
     }
 
-    public int getPosition() {
-        return position;
+    public int getLastPosition() {
+        return lastPosition;
     }
 
-    private void setName(String name) {
-        if (name.length() > 5) {
-            this.name = "Unnamed Car " + (++countUnnamed);
-            return;
+    public List<Integer> getAllPositions() {
+        return allPositions;
+    }
+
+    private void setName(String name) throws OutOfLengthException {
+        if (name.length() > RacingGame.CAR_NAME_MAXIMUM) {
+            throw new OutOfLengthException("The length of car name '" + name + "' is over 5.", name.length());
+        } else if (name.isEmpty()) {
+            throw new NullPointerException("Input car names to race.");
         }
 
         this.name = name;
     }
 
-    public void move() {
-        if (new Random().nextInt(10) >= 4) {
-            position++;
+    public void move(int randomNumber) {
+        if (randomNumber >= RacingGame.MINIMUM_TO_MOVE) {
+            lastPosition++;
         }
+
+        allPositions.add(lastPosition);
     }
 
     @Override
     public int compareTo(Car car) {
-        return position - car.position;
+        return lastPosition - car.lastPosition;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder stringBuilder = new StringBuilder(name + " : ");
-
-        for (int i = 0; i < position; i++) {
-            stringBuilder.append("-");
-        }
-
-        return stringBuilder.toString();
-    }
 }

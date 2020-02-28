@@ -1,41 +1,44 @@
+import java.util.List;
 
 public class RacingGame {
-    private int time;
-    private Cars cars;
+    public static final int MINIMUM_TO_MOVE = 4;
+    public static final int CAR_NAME_MAXIMUM = 5;
+    private int trialTime;
+    private Cars racingCars;
 
-    public RacingGame() {
-        cars = new Cars(RacingGameInputView.scanCarNames());
-        this.time = RacingGameInputView.scanTrialTime();
+    public RacingGame(String carNames, int trialTime) {
+        racingCars = new Cars(carNames);
+        this.trialTime = trialTime;
     }
 
-    public RacingGame(String carNames, int time) {
-        cars = new Cars(carNames);
-        this.time = time;
+    public Cars getRacingCars() {
+        return this.racingCars;
     }
 
-    public void start() {
-        RacingGameResultView.printExecutionMessage();
+    public int getTrialTime() {
+        return this.trialTime;
+    }
 
-        for (int i = 0; i < time; i++) {
-            cars.move();
-            RacingGameResultView.printRacingProgress(cars);
+    public void startGame() {
+        if (racingCars.getCars().size() <= 1) {
+            return;
+        }
+
+        for (int i = 0; i < this.trialTime; i++) {
+            racingCars.move();
         }
     }
 
-    public void showResult() {
-        RacingGameResultView.printResultMessage(getWinner(cars));
-    }
+    public Cars getWinner() {
+        Cars winner = new Cars(racingCars);
+        int maxPosition = racingCars.getCars().stream().max(Car::compareTo).get().getLastPosition();
 
-    public Cars getWinner(Cars cars) {
-        Cars winner = new Cars(cars);
-        int maxPosition = cars.getCars().stream().max(Car::compareTo).get().getPosition();
-
-        winner.getCars().removeIf(t -> t.getPosition() != maxPosition);
+        winner.getCars().removeIf(t -> t.getLastPosition() != maxPosition);
 
         return winner;
     }
 
-    public String getRacingCarNames() {
-        return cars.getCarNames();
+    public List<String> getRacingCarNames() {
+        return racingCars.getCarNames();
     }
 }

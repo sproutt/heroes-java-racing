@@ -1,9 +1,10 @@
-
 public class User {
     public static void main(String[] args) {
-        RacingGame racingGame = new RacingGame();
+        RacingGame racingGame = new RacingGame(InputView.scanCarNames(), InputView.scanTrialTime());
 
-        racingGame.start();
-        racingGame.showResult();
+        ResultView.printExecutionMessage();
+        racingGame.startGame();
+        ResultView.printResult(racingGame);
+        ResultView.printWinner(racingGame.getWinner());
     }
 }

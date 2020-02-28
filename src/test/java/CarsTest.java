@@ -1,12 +1,19 @@
 import org.junit.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import java.util.Arrays;
+
+import static org.junit.Assert.assertEquals;
 
 public class CarsTest {
 
     @Test
-    public void testCarsNameValid() {
+    public void 차이름들_모두_다섯글자_이하_테스트() {
+        assertEquals(new Cars("ionX, KLX").getCarNames(), Arrays.asList("ionX, KLX".split(", | ")));
+    }
+
+    @Test
+    public void 차이름들_중_하나라도_다섯글자_초과_테스트() {
         Cars cars = new Cars("ionX, plasmaXPT, solidX, KLX");
-        assertThat(cars.getCarNames()).isEqualTo("ionX, Unnamed Car 1, Unnamed Car 2, KLX");
+        assertEquals(cars.getCarNames(), Arrays.asList("ionX, KLX".split(", | ")));
     }
 }

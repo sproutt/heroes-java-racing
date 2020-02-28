@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Cars {
     private List<Car> cars;
@@ -9,11 +8,11 @@ public class Cars {
     public Cars(String carNames) {
         cars = new ArrayList<>();
 
-        List<String> carNamesList
-                = new ArrayList<>(Arrays.asList(carNames.replaceAll(" ", "").split(",")));
+        List<String> carNameCollection
+                = Arrays.asList(carNames.replaceAll(" ", "").split(","));
 
-        for (String carName : carNamesList) {
-            cars.add(new Car(carName));
+        for (String carName : carNameCollection) {
+            generateCarWithValidName(carName);
         }
     }
 
@@ -25,30 +24,27 @@ public class Cars {
         return cars;
     }
 
-    public String getCarNames() {
+    public List<String> getCarNames() {
         List<String> carNames = new ArrayList<>();
 
         for (Car car : cars) {
             carNames.add(car.getName());
         }
 
-        return carNames.stream().collect(Collectors.joining(", "));
+        return carNames;
     }
 
     public void move() {
         for (Car car : cars) {
-            car.move();
+            car.move(RandomGenerator.nextInt(10));
         }
     }
 
-    @Override
-    public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-
-        for (Car car : cars) {
-            stringBuilder.append(car.toString() + "\n");
+    private void generateCarWithValidName(String carName) {
+        try {
+            cars.add(new Car(carName));
+        } catch (OutOfLengthException e) {
+            e.printStackTrace();
         }
-
-        return stringBuilder.toString();
     }
 }
