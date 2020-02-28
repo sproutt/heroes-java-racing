@@ -1,3 +1,4 @@
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -31,6 +32,17 @@ public class RacingGame {
         }
     }
 
+    private void proceedOnce() {
+        cars.forEach(car -> car.move(random.nextInt(10), CRITERIA_NUMBER));
+    }
+
+    public List<Car> getWinnerCars() {
+        List<Car> winnerCars = cars;
+        int maxLocation = winnerCars.stream().max(Comparator.comparingInt(Car::getLocation)).get().getLocation();
+        winnerCars.removeIf(winnerCar -> winnerCar.getLocation() != maxLocation);
+        return winnerCars;
+    }
+
     private List<Car> convertCarNamesToCarList(String carNames) throws OutOfCarNameLengthException {
         String[] carNameArray = carNames.split(",");
         for (String carName : carNameArray) {
@@ -43,9 +55,5 @@ public class RacingGame {
         if (carName.length() > 5) {
             throw new OutOfCarNameLengthException("자동차 이름은 5글자 이하여야 합니다.");
         }
-    }
-
-    private void proceedOnce() {
-        cars.forEach(car -> car.move(random.nextInt(10), CRITERIA_NUMBER));
     }
 }

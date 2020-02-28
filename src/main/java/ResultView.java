@@ -1,4 +1,3 @@
-import java.util.Comparator;
 import java.util.List;
 
 public class ResultView {
@@ -13,18 +12,18 @@ public class ResultView {
             printRacingGameHistory(racingGame, time);
             System.out.println();
         }
-        printWinnerCar(racingGame);
+        printWinnerCars(racingGame.getWinnerCars());
     }
 
     private void printRacingGameHistory(RacingGame racingGame, int time) {
         racingGame.getCars().forEach(car ->
-            System.out.println(car.getName() + " : " + getMovingBars(car.getMovingStatuses(),time))
+                System.out.println(car.getName() + " : " + getMovingBars(car.getMovingStatuses(), time))
         );
     }
 
-    private String getMovingBars(List<Integer> movingStatuses,int time) {
+    private String getMovingBars(List<Integer> movingStatuses, int time) {
         String movingBars = "";
-        for (int index = 0; index <= time ; index++) {
+        for (int index = 0; index <= time; index++) {
             movingBars += getMovingBar(movingStatuses.get(index));
         }
         return movingBars;
@@ -37,10 +36,7 @@ public class ResultView {
         return "";
     }
 
-    private void printWinnerCar(RacingGame racingGame) {
-        List<Car> winnerCars = racingGame.getCars();
-        int maxLocation = winnerCars.stream().max(Comparator.comparingInt(Car::getLocation)).get().getLocation();
-        winnerCars.removeIf(winnerCar -> winnerCar.getLocation() != maxLocation);
+    private void printWinnerCars(List<Car> winnerCars) {
         winnerCars.forEach(winnerCar -> System.out.print(winnerCar.getName() + " "));
         System.out.println("가 최종 우승했습니다.");
     }
