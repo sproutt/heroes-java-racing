@@ -24,8 +24,8 @@ public class RacingGame {
         }
     }
 
-    public ArrayList<String> searchWinners(List<Car> cars){
-        ArrayList<String> winnerNames = new ArrayList<>();
+    public List<String> searchWinners(List<Car> cars){
+        List<String> winnerNames = new ArrayList<>();
         int maxPosition = searchMaxPosition(cars);
 
         for (Car car : cars){
@@ -35,7 +35,7 @@ public class RacingGame {
     }
 
     public int searchMaxPosition(List<Car> cars){
-        ArrayList<Integer> carPosition = new ArrayList<>();
+        List<Integer> carPosition = new ArrayList<>();
 
         for (Car car : cars){
             carPosition.add(car.getPosition());
@@ -43,7 +43,7 @@ public class RacingGame {
         return Collections.max(carPosition);
     }
 
-    public void checkWinner(Car car, ArrayList<String> winnerNames, int maxPosition){
+    public void checkWinner(Car car, List<String> winnerNames, int maxPosition){
         if (car.getPosition() == maxPosition){
             winnerNames.add(car.getName());
         }
