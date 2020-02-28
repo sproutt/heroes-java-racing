@@ -38,10 +38,10 @@ public class ResultView {
     }
 
     private void printWinnerCar(RacingGame racingGame) {
-        List<Car> cars = racingGame.getCars();
-        int maxLocation = cars.stream().max(Comparator.comparingInt(Car::getLocation)).get().getLocation();
-        cars.removeIf(car -> car.getLocation() != maxLocation);
-        cars.forEach(car -> System.out.print(car.getName() + " "));
+        List<Car> winnerCars = racingGame.getCars();
+        int maxLocation = winnerCars.stream().max(Comparator.comparingInt(Car::getLocation)).get().getLocation();
+        winnerCars.removeIf(winnerCar -> winnerCar.getLocation() != maxLocation);
+        winnerCars.forEach(winnerCar -> System.out.print(winnerCar.getName() + " "));
         System.out.println("가 최종 우승했습니다.");
     }
 }
