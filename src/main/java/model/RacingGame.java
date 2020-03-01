@@ -1,12 +1,11 @@
 package model;
 
 import exception.OutOfCarNameLengthException;
+import util.Converter;
 import util.RandomNumberGenerator;
 
 import java.util.Comparator;
 import java.util.List;
-
-import static util.Converter.convertCarNamesToCarList;
 
 public class RacingGame {
 
@@ -26,24 +25,24 @@ public class RacingGame {
 
     public void set(int attemptNumber, String carNames) throws OutOfCarNameLengthException {
         this.attemptNumber = attemptNumber;
-        this.cars = convertCarNamesToCarList(carNames);
+        this.cars = Converter.convertCarNamesToCarList(carNames);
     }
 
     public void start() {
         for (int count = 0; count < attemptNumber; count++) {
-            proceedOnce(RandomNumberGenerator.createInteger(INTEGER_LIMIT));
+            proceedOnce(RandomNumberGenerator.createIntegers(cars.size(), INTEGER_LIMIT));
         }
     }
 
-    private void proceedOnce(int randomInteger) {
-        cars.forEach(car -> car.move(randomInteger, CRITERIA_NUMBER));
+    public void proceedOnce(List<Integer> randomIntegers) {
+        for (int index = 0; index < cars.size(); index++) {
+            cars.get(index).move(randomIntegers.get(index), CRITERIA_NUMBER);
+        }
     }
 
     public List<Car> getWinnerCars() {
-        List<Car> winnerCars = cars;
-        int maxLocation = winnerCars.stream().max(Comparator.comparingInt(Car::getLocation)).get().getLocation();
-        winnerCars.removeIf(winnerCar -> winnerCar.getLocation() != maxLocation);
-        return winnerCars;
+        int maxLocation = cars.stream().max(Comparator.comparingInt(Car::getLocation)).get().getLocation();
+        cars.removeIf(winnerCar -> winnerCar.getLocation() != maxLocation);
+        return cars;
     }
-
 }

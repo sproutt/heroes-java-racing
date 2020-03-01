@@ -14,7 +14,7 @@ public class Application {
         String carNames = inputView.inputCarNames();
         int attemptNumber = inputView.inputAttemptNumber();
 
-        racingGame.set(attemptNumber,carNames);
+        racingGame.set(attemptNumber, carNames);
         racingGame.start();
         resultView.printRacingGameResult(racingGame);
     }
