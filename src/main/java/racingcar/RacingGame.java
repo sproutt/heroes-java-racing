@@ -6,20 +6,17 @@ import java.util.Random;
 
 public class RacingGame {
     private List<Car> cars;
-    private int carNumber;
-    private int runNumber;
-
-    public RacingGame(String carNames, int runNumber) {
+    private int time;
+    private Random random = new Random();
+    private int boundaryNum = random.nextInt(10);
+    public RacingGame(String carNames, int time) {
         this.cars = setCarNames(carNames);
-        this.runNumber = runNumber;
+        this.time = time;
     }
 
     public List<Car> setCarNames(String carNames) {
         String[] names = carNames.split(",");
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carNumber; i++) {
-            cars.add(new Car());
-        }
         for (String name : names) {
             cars.add(new Car(name));
         }
@@ -27,21 +24,30 @@ public class RacingGame {
     }
 
     public boolean randomScopeCheck() {
-        if(new Random().nextInt(10) >= 4){
+        if(boundaryNum >= 4){
             return true;
         }
         return false;
     }
 
-    public List<Car> move() {
+    public void start() {
+        for(int i = 0; i < time; i++) {
+            startGame();
+            ResultView.showResult(getCars());
+        }
+    }
+
+    public List<Car> startGame() {
         moveCar();
         return cars;
     }
+
     private void moveCar(){
         for (Car car : cars) {
             moveOrNot(car);
         }
     }
+
     private void moveOrNot(Car car){
         if (randomScopeCheck()) {
             car.move();
@@ -52,26 +58,4 @@ public class RacingGame {
         return cars;
     }
 
-    /*
-    public static void main(String[] args) {
-        InputView inputView = new InputView();
-        ResultView resultView = new ResultView();
-
-        String carNames = InputView.getInputNameOfCars();
-        int runNumber = InputView.getInputRunNumber();
-
-        RacingGame racingGame = new RacingGame(carNames, runNumber);
-        ResultView.showResultMessage();
-
-        for(int i = 0; i < runNumber; i++) {
-            racingGame.move();
-            ResultView.showResult(racingGame.getCars());
-        }
-
-        Winners winners = new Winners(racingGame.getCars());
-        ResultView.showWinner(winners.getCars());
-
-    }
-
-     */
 }

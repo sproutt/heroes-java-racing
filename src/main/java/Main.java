@@ -1,7 +1,6 @@
-import racingcar.InputView;
-import racingcar.RacingGame;
-import racingcar.ResultView;
-import racingcar.Winners;
+import racingcar.*;
+
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -14,13 +13,12 @@ public class Main {
         RacingGame racingGame = new RacingGame(carNames, runNumber);
         ResultView.showResultMessage();
 
-        for(int i = 0; i < runNumber; i++) {
-            racingGame.move();
-            ResultView.showResult(racingGame.getCars());
-        }
+        racingGame.start();
 
-        Winners winners = new Winners(racingGame.getCars());
-        ResultView.showWinner(winners.getCars());
+        List<Car> carList = racingGame.getCars();
+        Winners winners = new Winners(carList);
 
+        List<Car> winnerCarList = winners.getCars();
+        ResultView.showWinner(winnerCarList);
     }
 }
