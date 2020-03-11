@@ -1,3 +1,8 @@
+package view;
+
+import model.Car;
+import model.RacingGame;
+
 import java.util.List;
 
 public class ResultView {
