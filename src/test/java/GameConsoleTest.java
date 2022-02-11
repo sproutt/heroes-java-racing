@@ -12,6 +12,7 @@ public class GameConsoleTest {
         //when
         for (int i = 0; i < 5; i++) {
             int randomValue = gameConsole.createRandomValue();
+            //then
             assertThat(randomValue >= 0 && randomValue <= 9).isTrue();
         }
     }
