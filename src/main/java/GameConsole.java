@@ -2,20 +2,14 @@ import java.util.List;
 import java.util.Random;
 
 public class GameConsole {
-    private List<Car> carList;
-    private int trialCount;
 
     public void run() {
-        init();
+        List<Car> carList = CarFactory.createCarList(InputView.inputCarCount());
+        int trialCount = InputView.inputTrialCount();
         for (int i = 0; i < trialCount; i++) {
             play(carList);
         }
         printResult(carList);
-    }
-
-    private void init() {
-        carList = CarFactory.createCarList(InputView.inputCarCount());
-        trialCount = InputView.inputTrialCount();
     }
 
     private void play(List<Car> carList) {
@@ -31,7 +25,7 @@ public class GameConsole {
         }
     }
 
-    public int createRandomValue() {
+    private int createRandomValue() {
         Random random = new Random();
         return random.nextInt(10);
     }
