@@ -10,10 +10,6 @@ public class Car {
         }
     }
 
-    public int getPosition() {
-        return position;
-    }
-
     private String makePositionUI() {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < position; i++) {

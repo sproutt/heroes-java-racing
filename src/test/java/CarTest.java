@@ -16,7 +16,7 @@ public class CarTest {
         car.move(randomValue);
 
         //then
-        assertThat(car.getPosition()).isEqualTo(1);
+        assertThat(car.toString()).isEqualTo("-");
     }
 
     @Test
@@ -29,7 +29,7 @@ public class CarTest {
         car.move(randomValue);
 
         //then
-        assertThat(car.getPosition()).isEqualTo(0);
+        assertThat(car.toString()).isEqualTo("");
     }
 
     @Test
