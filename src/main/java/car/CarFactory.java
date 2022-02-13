@@ -1,0 +1,17 @@
+package car;
+
+import car.Car;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class CarFactory {
+
+    public static List<Car> createCarList(int numberOfCar) {
+        List<Car> carList = new ArrayList<>();
+        for (int i = 0; i < numberOfCar; i++) {
+            carList.add(new Car());
+        }
+        return carList;
+    }
+}
