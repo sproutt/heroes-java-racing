@@ -24,4 +24,8 @@ public class Car {
     public String toString() {
         return makePositionUI();
     }
+
+    public int getPosition() {
+        return position;
+    }
 }

@@ -6,21 +6,21 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class GameTest {
     @Test
-    public void 차대수_음수_입력값_테스트() {
+    public void 자동차수가_음수가_입력되었을때_예외를_던진다() {
         assertThatThrownBy(() -> new Game(-1, 3))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageStartingWith("[ERROR]");
     }
 
     @Test
-    public void 시도수_음수_입력값_테스트() {
+    public void 시도수가_음수가_입력되었을때_예외를_던진다() {
         assertThatThrownBy(() -> new Game(3, -1))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageStartingWith("[ERROR]");
     }
 
     @Test
-    public void 랜덤_값_부여_테스트() {
+    public void 랜덤값이_주어졌을때_0이상_9사이인지_테스트한다() {
         //given
         Game game = new Game(3,5);
         //when

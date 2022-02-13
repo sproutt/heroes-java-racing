@@ -9,7 +9,7 @@ import java.util.List;
 public class CarFactoryTest {
 
     @Test
-    public void 차_리스트_생성() {
+    public void 자동차수가_5일때_리스트의_크기도_5인지_테스트한다() {
         //given
         int numberOfCar = 5;
 

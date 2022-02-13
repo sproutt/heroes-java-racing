@@ -7,7 +7,7 @@ import org.junit.Test;
 public class CarTest {
 
     @Test
-    public void 차_전진_O() {
+    public void 값이_4초과일때_차를_한칸_이동시킨다() {
         //given
         Car car = new Car();
         int randomValue = 5;
@@ -16,11 +16,11 @@ public class CarTest {
         car.move(randomValue);
 
         //then
-        assertThat(car.toString()).isEqualTo("-");
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @Test
-    public void 차_전진_X() {
+    public void 값이_4이하일때_차를_이동시키지_않는다() {
         //given
         Car car = new Car();
         int randomValue = 4;
@@ -29,11 +29,11 @@ public class CarTest {
         car.move(randomValue);
 
         //then
-        assertThat(car.toString()).isEqualTo("");
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 
     @Test
-    public void 차_포지션_UI_변환() {
+    public void 값이_4이상_기회가_3번_주어질때_차를_3칸_이동시킨다() {
         //given
         Car car = new Car();
         String expected = "---";
