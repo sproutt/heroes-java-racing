@@ -8,11 +8,11 @@ public class InputView {
 
     public static int inputCarCount() {
         System.out.println(CAR_NUMBER_INPUT_MESSAGE);
-        return scanner.nextInt();
+        return Integer.parseInt(scanner.nextLine());
     }
 
     public static int inputTrialCount() {
         System.out.println(GAME_TRIAL_INPUT_MESSAGE);
-        return scanner.nextInt();
+        return Integer.parseInt(scanner.nextLine());
     }
 }
