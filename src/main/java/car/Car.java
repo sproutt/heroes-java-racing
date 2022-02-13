@@ -1,3 +1,5 @@
+package car;
+
 public class Car {
     private static final int CAR_PROCEED_CRITERIA = 4;
     private static final String POSITION_HYPHON = "-";

@@ -1,3 +1,10 @@
+package game;
+
+import car.Car;
+import car.CarFactory;
+import view.InputView;
+import view.OutputView;
+
 import java.util.List;
 
 public class GameConsole {
@@ -17,6 +24,7 @@ public class GameConsole {
 
     private void generateGame() {
         try {
+
             game = new Game(InputView.inputCarCount(), InputView.inputTrialCount());
         } catch (NumberFormatException exception) {
             System.out.println(NOT_NUMBER_ERROR_MESSAGE);

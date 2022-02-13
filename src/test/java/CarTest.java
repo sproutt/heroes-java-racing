@@ -1,6 +1,6 @@
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.assertj.core.api.Assertions;
+import car.Car;
 import org.junit.Test;
 
 

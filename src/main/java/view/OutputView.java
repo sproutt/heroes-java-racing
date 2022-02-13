@@ -1,3 +1,5 @@
+package view;
+
 public class OutputView {
     public static final String GAME_RESULT_MESSAGE = "\n실행 결과\n";
 

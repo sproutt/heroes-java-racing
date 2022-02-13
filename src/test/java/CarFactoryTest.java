@@ -1,5 +1,7 @@
 import static org.assertj.core.api.Assertions.assertThat;
 
+import car.Car;
+import car.CarFactory;
 import org.junit.Test;
 
 import java.util.List;
