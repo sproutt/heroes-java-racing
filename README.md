@@ -34,7 +34,7 @@ ECONOVATION HEROES Java Racing Game Practice
     * List<Car> Cars;
     * public RacingCars(List<Car> Cars);
     * public List<Car> getCars();
-  * MovingStrategy
+  * MovingRule
     * public boolean judge();
 
 * View
