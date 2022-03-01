@@ -1,23 +1,17 @@
 package model;
 
-public class Car{
+public class Car {
+    private int position;
 
-    private String name;
-    private int position = 0;
-
-    public Car(String name){
-        this.name = name;
+    public Car() {
+        position = 0;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public int getPosition(){
-        return position;
-    }
-
-    public void move(){
+    public void move() {
         position++;
+    }
+
+    public int getPosition() {
+        return position;
     }
 }
