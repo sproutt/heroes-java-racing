@@ -22,7 +22,7 @@ public class RacingApplication {
         }
 
         for (Car car : cars) {
-            ResultView.printAllCarsState(car.moveCount());
+            ResultView.printAllCarsState(car.getCarNum(), car.moveCount());
         }
     }
 }
