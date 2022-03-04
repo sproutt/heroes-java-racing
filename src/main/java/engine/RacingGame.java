@@ -10,9 +10,9 @@ import java.util.List;
 
 public class RacingGame {
 
-    List<Car> cars;
-    CarController carController;
-    InputView iv;
+    private List<Car> cars;
+    private CarController carController;
+    private InputView iv;
 
     public RacingGame() {
         cars = new ArrayList<>();
