@@ -2,6 +2,9 @@ package controller;
 
 import function.RandomNumberMaker;
 import model.Car;
+import model.State;
+import model.Movable;
+import model.UnMovable;
 
 import java.util.List;
 
@@ -18,15 +21,16 @@ public class CarController {
 
     public void moveCar(List<Car> cars) {
         for (Car car : cars) {
-            if(checkMoveOrStop(car)) car.moveForward();
+            car.changeState(checkMoveOrStop(car));
+            car.move();
         }
     }
 
-    private boolean checkMoveOrStop(Car car) {
+    private State checkMoveOrStop(Car car) {
         if (getRandomNumber() >= MOVE_CONDITION) {
-            return true;
+            return new Movable();
         }
-        return false;
+        return new UnMovable();
     }
 
     private int getRandomNumber() {

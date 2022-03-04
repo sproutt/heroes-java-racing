@@ -4,14 +4,11 @@ public class Car{
 
     long number;
     int length;
+    State state;
 
     public Car(long number) {
         this.number = number;
         length = 0;
-    }
-
-    public void moveForward() {
-        length++;
     }
 
     public int moveCount() {
@@ -20,5 +17,13 @@ public class Car{
 
     public long getCarNum() {
         return number;
+    }
+
+    public void changeState(State cmd) {
+        state = cmd;
+    }
+
+    public void move() {
+        length = state.execute(length);
     }
 }
