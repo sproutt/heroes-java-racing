@@ -1,12 +1,9 @@
 package model;
 
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 class CarTest {
 
@@ -27,19 +24,30 @@ class CarTest {
     }
 
     @Test
-    @DisplayName("차를 한 번 움직이면 length가 1 늘어나야 한다")
-    public void addLength() throws Exception{
+    @DisplayName("moveable 상태면 한 칸 전진")
+    public void go() throws Exception{
         //given
         Car car1 = new Car(1L);
-        Car car2 = new Car(2L);
+        car1.changeState(new Movable());
 
         //when
-        car1.moveForward();
-        car1.moveForward();
-        car2.moveForward();
+        car1.move();
 
         //then
-        assertThat(car1.moveCount()).isEqualTo(2);
-        assertThat(car2.moveCount()).isEqualTo(1);
+        assertThat(car1.moveCount()).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("unmovable 상태면 전진하지 않음")
+    public void stop() throws Exception{
+        //given
+        Car car1 = new Car(1L);
+        car1.changeState(new UnMovable());
+
+        //when
+        car1.move();
+
+        //then
+        assertThat(car1.moveCount()).isEqualTo(0);
     }
 }
