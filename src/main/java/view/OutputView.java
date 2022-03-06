@@ -9,9 +9,10 @@ public class OutputView {
     }
 
     public void printPosition(int position) {
+        StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < position; i++) {
-            System.out.print(HYPHEN);
+            stringBuilder.append(HYPHEN);
         }
-        System.out.println();
+        System.out.println(stringBuilder);
     }
 }

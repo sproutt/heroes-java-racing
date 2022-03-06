@@ -20,21 +20,4 @@ class RaceTest {
 
         assertThat(cars.size()).isEqualTo(3);
     }
-
-    @Test
-    @DisplayName("모든 자동차들이 random 값 4이상일 때 전진한다.")
-    void testWhenRandomValueIsOverThreeAllTheCarMove(){
-        Race race = new Race();
-        List<Car> cars = new ArrayList<>();
-        int randomNumber = 4;
-        for (int i = 0; i < 3; i++) {
-            cars.add(new Car());
-        }
-
-        race.playOneRound(cars, randomNumber);
-
-        for (int i = 0; i < cars.size(); i++) {
-            assertThat(cars.get(i).getPosition()).isEqualTo(1);
-        }
-    }
 }
