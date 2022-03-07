@@ -10,7 +10,6 @@ import java.util.List;
 
 public class CarController {
 
-    private static final int NUMBER_RANGE = 10;
     private static final int MOVE_CONDITION = 4;
 
     public void registerCars(List<Car> cars, long len) {
@@ -34,6 +33,6 @@ public class CarController {
     }
 
     private int getRandomNumber() {
-        return RandomNumberMaker.getRandomNumber(NUMBER_RANGE);
+        return RandomNumberMaker.getRandomNumber();
     }
 }
