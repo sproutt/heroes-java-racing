@@ -6,10 +6,12 @@ import java.util.List;
 
 public class ResultView {
 
-    public static void printAllCarsState(long carNum, int len) {
-        System.out.print("car" + carNum + " : ");
+    private static final String RESULT_SYMBOL = "-";
+
+    public static void printAllCarsState(long id, int len) {
+        System.out.println("car" + id);
         for (int i = 0; i < len; i++) {
-            System.out.print("-");
+            System.out.print(RESULT_SYMBOL);
         }
         System.out.println();
     }
