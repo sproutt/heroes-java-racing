@@ -12,19 +12,19 @@ public class RacingGame {
 
     private List<Car> cars;
     private CarController carController;
-    private InputView iv;
+    private InputView inputView;
 
     public RacingGame() {
         cars = new ArrayList<>();
         carController = new CarController();
-        iv = new InputView();
+        inputView = new InputView();
     }
 
     public void run() {
-        long carNum = iv.inputTotalCarNum();
-        int trial = iv.inputTotalTrial();
+        long carNum = inputView.inputTotalCarNum();
+        int trial = inputView.inputTotalTrial();
 
-        regist(carNum);
+        register(carNum);
         executeGame(trial);
         printAll(cars);
     }
@@ -35,7 +35,7 @@ public class RacingGame {
         }
     }
 
-    private void regist(long carNum) {
+    private void register(long carNum) {
         carController.registerCars(cars, carNum);
     }
 
