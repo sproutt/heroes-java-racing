@@ -1,39 +1,53 @@
 package model;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Before;
-import org.junit.Test;
+import static org.assertj.core.api.Assertions.*;
 
-public class CarTest {
+class CarTest {
 
-    private Car tesla;
-    private Car kia;
-    private Car hyundai;
+    @Test
+    @DisplayName("차 번호가 식별자이다")
+    public void identification() throws Exception{
+        //given
+        Car car1 = new Car(1L);
+        Car car2 = new Car(2L);
 
-    @Before
-    public void setup(){
-        tesla = new Car("tesla");
-        kia = new Car("kia");
-        hyundai = new Car("hyundai");
+        //when
+        long carNum1 = car1.getCarNum();
+        long carNum2 = car2.getCarNum();
+
+        //then
+        assertThat(carNum1).isEqualTo(1L);
+        assertThat(carNum2).isEqualTo(2L);
     }
 
     @Test
-    public void getNameTest() {
-        assertEquals("tesla", tesla.getName());
-        assertEquals("kia", kia.getName());
-        assertEquals("hyundai", hyundai.getName());
+    @DisplayName("moveable 상태면 한 칸 전진")
+    public void go() throws Exception{
+        //given
+        Car car1 = new Car(1L);
+        car1.changeState(new Movable());
+
+        //when
+        car1.move();
+
+        //then
+        assertThat(car1.moveCount()).isEqualTo(1);
     }
 
     @Test
-    public void getPositionAndMoveTest(){
-        tesla.move(); tesla.move(); tesla.move();
-        assertEquals(3, tesla.getPosition());
+    @DisplayName("unmovable 상태면 전진하지 않음")
+    public void stop() throws Exception{
+        //given
+        Car car1 = new Car(1L);
+        car1.changeState(new UnMovable());
 
-        kia.move(); kia.move();
-        assertEquals(2, kia.getPosition());
+        //when
+        car1.move();
 
-        hyundai.move();
-        assertEquals(1, hyundai.getPosition());
+        //then
+        assertThat(car1.moveCount()).isEqualTo(0);
     }
 }

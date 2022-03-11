@@ -2,22 +2,28 @@ package model;
 
 public class Car{
 
-    private String name;
-    private int position = 0;
+    long number;
+    int length;
+    State state;
 
-    public Car(String name){
-        this.name = name;
+    public Car(long number) {
+        this.number = number;
+        length = 0;
     }
 
-    public String getName() {
-        return name;
+    public int moveCount() {
+        return length;
     }
 
-    public int getPosition(){
-        return position;
+    public long getCarNum() {
+        return number;
     }
 
-    public void move(){
-        position++;
+    public void changeState(State cmd) {
+        state = cmd;
+    }
+
+    public void move() {
+        length = state.execute(length);
     }
 }
